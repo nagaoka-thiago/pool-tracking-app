@@ -1,16 +1,11 @@
-# flutter_application_1
+# Pool ball tracking app
 
-A new Flutter project.
+Its purpose is to keep tracking the balls each player made in the round.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To download this project, you need to run the following script:
 
-A few resources to get you started if this is your first Flutter project:
+`git clone https://github.com/nagaoka-thiago/pool-tracking-app.git`
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+To run this project on Visual Studio Code, just press F5 and choose Google Chrome as your browser.
