@@ -16,18 +16,10 @@ class InputsWidget extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<InputsWidget> createState() => _InputsWidgetState(
-      this.balls, this.selectedBalls, this.deleteBalls, this.reset);
+  State<InputsWidget> createState() => _InputsWidgetState();
 }
 
 class _InputsWidgetState extends State<InputsWidget> {
-  final List<Ball> balls;
-  final List<Ball> selectedBalls;
-  final Function deleteBalls;
-  final Function reset;
-
-  _InputsWidgetState(
-      this.balls, this.selectedBalls, this.deleteBalls, this.reset);
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -38,11 +30,11 @@ class _InputsWidgetState extends State<InputsWidget> {
             mainAxisSize: MainAxisSize.min,
             children: [
               MyDropButtonInputWidget(
-                  balls: balls, selectedBalls: selectedBalls)
+                  balls: widget.balls, selectedBalls: widget.selectedBalls)
             ],
           ),
           Column(children: [
-            balls.isNotEmpty
+            widget.balls.isNotEmpty
                 ? TextButton(
                     style: TextButton.styleFrom(
                         backgroundColor: Colors.blue,
@@ -50,7 +42,7 @@ class _InputsWidgetState extends State<InputsWidget> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0))),
                     onPressed: () {
-                      deleteBalls();
+                      widget.deleteBalls();
                     },
                     child: const Text(
                       'Confirm the balls',
@@ -68,7 +60,7 @@ class _InputsWidgetState extends State<InputsWidget> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0))),
               onPressed: () {
-                reset();
+                widget.reset();
               },
               child: const Text(
                 'Reset',

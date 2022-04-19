@@ -12,30 +12,34 @@ class MyDropButtonInputWidget extends StatefulWidget {
 
   @override
   State<MyDropButtonInputWidget> createState() =>
-      _MyDropButtonInputWidgetState(balls, selectedBalls);
+      _MyDropButtonInputWidgetState();
 }
 
 class _MyDropButtonInputWidgetState extends State<MyDropButtonInputWidget> {
-  List<Ball> balls;
-  late Ball selected = balls[0];
-  final List<Ball> selectedBalls;
-  _MyDropButtonInputWidgetState(this.balls, this.selectedBalls);
+  late Ball selected;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    selected = widget.balls[0];
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        balls.isNotEmpty
+        widget.balls.isNotEmpty
             ? Container(
                 width: 180,
-                child: ListButtonsWidget(selectedBalls: selectedBalls),
+                child: ListButtonsWidget(selectedBalls: widget.selectedBalls),
               )
             : const Text('', style: TextStyle(fontSize: 18)),
         const SizedBox(height: 20),
-        balls.isNotEmpty
+        widget.balls.isNotEmpty
             ? DropdownButton<Ball>(
-                value: balls[0],
+                value: widget.balls[0],
                 icon: const Icon(Icons.arrow_downward),
                 elevation: 16,
                 style: const TextStyle(color: Colors.deepPurple),
@@ -46,16 +50,16 @@ class _MyDropButtonInputWidgetState extends State<MyDropButtonInputWidget> {
                   });
 
                   bool found = false;
-                  for (Ball item in selectedBalls) {
+                  for (Ball item in widget.selectedBalls) {
                     if (selected.id == item.id) {
                       found = true;
                     }
                   }
                   if (!found) {
-                    selectedBalls.add(selected);
+                    widget.selectedBalls.add(selected);
                   }
                 },
-                items: balls.map<DropdownMenuItem<Ball>>((Ball ball) {
+                items: widget.balls.map<DropdownMenuItem<Ball>>((Ball ball) {
                   return DropdownMenuItem<Ball>(
                       value: ball,
                       child: BallWidget(id: ball.id, url: ball.url));

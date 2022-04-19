@@ -65,7 +65,7 @@ class _SecondPageWidgetState extends State<SecondPageWidget> {
                         shrinkWrap: true,
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 4, childAspectRatio: 1 / .25),
+                                crossAxisCount: 3, childAspectRatio: 1 / .25),
                         itemCount: balls.length,
                         itemBuilder: (context, index) {
                           return BallWidget(

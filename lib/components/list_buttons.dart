@@ -9,23 +9,18 @@ class ListButtonsWidget extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<ListButtonsWidget> createState() =>
-      _ListButtonsWidgetState(this.selectedBalls);
+  State<ListButtonsWidget> createState() => _ListButtonsWidgetState();
 }
 
 class _ListButtonsWidgetState extends State<ListButtonsWidget> {
-  final List<Ball> selectedBalls;
-
-  _ListButtonsWidgetState(this.selectedBalls);
-
   @override
   Widget build(BuildContext context) {
-    return selectedBalls.isNotEmpty
+    return widget.selectedBalls.isNotEmpty
         ? GridView.builder(
             shrinkWrap: true,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3),
-            itemCount: selectedBalls.length,
+            itemCount: widget.selectedBalls.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
                   margin: const EdgeInsets.only(right: 10.0, bottom: 10.0),
@@ -37,13 +32,13 @@ class _ListButtonsWidgetState extends State<ListButtonsWidget> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0))),
                       onPressed: () {
-                        if (index < selectedBalls.length) {
+                        if (index < widget.selectedBalls.length) {
                           setState(() {
-                            selectedBalls.removeAt(index);
+                            widget.selectedBalls.removeAt(index);
                           });
                         }
                       },
-                      child: Text('${selectedBalls[index].id}')));
+                      child: Text('${widget.selectedBalls[index].id}')));
             },
           )
         : const Text('No balls selected!');
