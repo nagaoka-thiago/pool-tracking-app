@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/classes/Ball.dart';
+import 'package:flutter_application_1/classes/ball_model.dart';
 
 class ListButtonsWidget extends StatefulWidget {
   final List<Ball> selectedBalls;

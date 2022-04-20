@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/classes/Ball.dart';
+import 'package:flutter_application_1/classes/ball_model.dart';
 import 'package:flutter_application_1/components/mydropbuttoninput.dart';
 
 class InputsWidget extends StatefulWidget {

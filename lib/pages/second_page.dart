@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/classes/Ball.dart';
+import 'package:flutter_application_1/classes/ball_model.dart';
 import 'package:flutter_application_1/components/ball.dart';
 import 'package:flutter_application_1/components/inputs.dart';
 import 'package:flutter_application_1/components/player_list_ball.dart';
@@ -21,7 +21,6 @@ class _SecondPageWidgetState extends State<SecondPageWidget> {
 
   @override
   void initState() {
-    // TODO: implement initState
     balls.addAll(Constants.balls);
     selectedBalls = [];
     yourBalls = [];
@@ -41,7 +40,7 @@ class _SecondPageWidgetState extends State<SecondPageWidget> {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+              SizedBox(
                   height: 30,
                   child: balls.isNotEmpty
                       ? (yourTurn
@@ -153,10 +152,10 @@ class _SecondPageWidgetState extends State<SecondPageWidget> {
                 children: [
                   Expanded(
                       child: PlayerListWidget(
-                          title: 'You', player_balls: yourBalls)),
+                          title: 'You', playerBalls: yourBalls)),
                   Expanded(
                     child: PlayerListWidget(
-                        title: 'Opponent', player_balls: opponentBalls),
+                        title: 'Opponent', playerBalls: opponentBalls),
                   )
                 ],
               )

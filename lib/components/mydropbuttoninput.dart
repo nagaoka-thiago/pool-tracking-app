@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/classes/Ball.dart';
+import 'package:flutter_application_1/classes/ball_model.dart';
 import 'package:flutter_application_1/components/ball.dart';
 import 'package:flutter_application_1/components/list_buttons.dart';
 
@@ -20,7 +20,6 @@ class _MyDropButtonInputWidgetState extends State<MyDropButtonInputWidget> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     selected = widget.balls[0];
   }
@@ -31,7 +30,7 @@ class _MyDropButtonInputWidgetState extends State<MyDropButtonInputWidget> {
       mainAxisSize: MainAxisSize.min,
       children: [
         widget.balls.isNotEmpty
-            ? Container(
+            ? SizedBox(
                 width: 180,
                 child: ListButtonsWidget(selectedBalls: widget.selectedBalls),
               )

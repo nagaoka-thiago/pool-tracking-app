@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/classes/Ball.dart';
+import 'package:flutter_application_1/classes/ball_model.dart';
 import 'package:flutter_application_1/components/ball.dart';
 
 class PlayerListWidget extends StatefulWidget {
   final String title;
-  final List<Ball> player_balls;
+  final List<Ball> playerBalls;
   const PlayerListWidget(
-      {Key? key, required this.title, required this.player_balls})
+      {Key? key, required this.title, required this.playerBalls})
       : super(key: key);
 
   @override
@@ -24,7 +24,7 @@ class _PlayerListWidgetState extends State<PlayerListWidget> {
           style: const TextStyle(fontSize: 18),
         ),
         const SizedBox(height: 10),
-        widget.player_balls.isNotEmpty
+        widget.playerBalls.isNotEmpty
             ? Flexible(
                 child: GridView.builder(
                     shrinkWrap: true,
@@ -33,11 +33,11 @@ class _PlayerListWidgetState extends State<PlayerListWidget> {
                       crossAxisCount: 3,
                       childAspectRatio: 1 / .25,
                     ),
-                    itemCount: widget.player_balls.length,
+                    itemCount: widget.playerBalls.length,
                     itemBuilder: (context, index) {
                       return BallWidget(
-                          id: widget.player_balls[index].id,
-                          url: widget.player_balls[index].url);
+                          id: widget.playerBalls[index].id,
+                          url: widget.playerBalls[index].url);
                     }),
               )
             : const Text('Player did not make any balls!',

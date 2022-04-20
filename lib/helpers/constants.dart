@@ -1,4 +1,4 @@
-import '../classes/Ball.dart';
+import '../classes/ball_model.dart';
 
 class Constants {
   static final List<Ball> balls = [
