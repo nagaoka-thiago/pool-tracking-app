@@ -7,12 +7,14 @@ class InputsWidget extends StatefulWidget {
   final List<Ball> selectedBalls;
   final Function deleteBalls;
   final Function reset;
-  const InputsWidget(
+  Ball? selected;
+  InputsWidget(
       {Key? key,
       required this.balls,
       required this.selectedBalls,
       required this.deleteBalls,
-      required this.reset})
+      required this.reset,
+      required this.selected})
       : super(key: key);
 
   @override
@@ -30,7 +32,9 @@ class _InputsWidgetState extends State<InputsWidget> {
             mainAxisSize: MainAxisSize.min,
             children: [
               MyDropButtonInputWidget(
-                  balls: widget.balls, selectedBalls: widget.selectedBalls)
+                  balls: widget.balls,
+                  selectedBalls: widget.selectedBalls,
+                  selected: widget.selected)
             ],
           ),
           Column(children: [

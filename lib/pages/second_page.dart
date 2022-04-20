@@ -13,19 +13,22 @@ class SecondPageWidget extends StatefulWidget {
 }
 
 class _SecondPageWidgetState extends State<SecondPageWidget> {
-  List<Ball> balls = [];
-  List<Ball> selectedBalls = [];
-  List<Ball> yourBalls = [];
-  List<Ball> opponentBalls = [];
-  bool yourTurn = true;
+  late List<Ball> balls;
+  late List<Ball> selectedBalls;
+  late List<Ball> yourBalls;
+  late List<Ball> opponentBalls;
+  late bool yourTurn;
+  late Ball? selected;
 
   @override
   void initState() {
+    balls = [];
     balls.addAll(Constants.balls);
     selectedBalls = [];
     yourBalls = [];
     opponentBalls = [];
     yourTurn = true;
+    selected = null;
     super.initState();
   }
 
@@ -77,6 +80,7 @@ class _SecondPageWidgetState extends State<SecondPageWidget> {
                   child: InputsWidget(
                       balls: balls,
                       selectedBalls: selectedBalls,
+                      selected: selected,
                       deleteBalls: () {
                         setState(() {
                           if (selectedBalls.isNotEmpty) {
@@ -84,6 +88,7 @@ class _SecondPageWidgetState extends State<SecondPageWidget> {
                               if (balls.isNotEmpty) {
                                 balls.removeWhere(
                                     (ball) => selectedBall.id == ball.id);
+                                selected = null;
                                 if (yourTurn) {
                                   yourBalls.add(selectedBall);
                                 } else {

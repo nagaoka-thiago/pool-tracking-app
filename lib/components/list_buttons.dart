@@ -24,7 +24,7 @@ class _ListButtonsWidgetState extends State<ListButtonsWidget> {
                   margin: const EdgeInsets.only(right: 10.0, bottom: 10.0),
                   child: TextButton(
                       style: TextButton.styleFrom(
-                          backgroundColor: Colors.blue,
+                          backgroundColor: Colors.green,
                           primary: Colors.white,
                           textStyle: const TextStyle(fontSize: 20),
                           shape: RoundedRectangleBorder(

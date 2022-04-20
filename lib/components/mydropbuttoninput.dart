@@ -6,8 +6,12 @@ import 'package:flutter_application_1/components/list_buttons.dart';
 class MyDropButtonInputWidget extends StatefulWidget {
   final List<Ball> balls;
   final List<Ball> selectedBalls;
-  const MyDropButtonInputWidget(
-      {Key? key, required this.balls, required this.selectedBalls})
+  Ball? selected;
+  MyDropButtonInputWidget(
+      {Key? key,
+      required this.balls,
+      required this.selectedBalls,
+      required this.selected})
       : super(key: key);
 
   @override
@@ -16,12 +20,9 @@ class MyDropButtonInputWidget extends StatefulWidget {
 }
 
 class _MyDropButtonInputWidgetState extends State<MyDropButtonInputWidget> {
-  late Ball selected;
-
   @override
   void initState() {
     super.initState();
-    selected = widget.balls[0];
   }
 
   @override
@@ -38,24 +39,24 @@ class _MyDropButtonInputWidgetState extends State<MyDropButtonInputWidget> {
         const SizedBox(height: 20),
         widget.balls.isNotEmpty
             ? DropdownButton<Ball>(
-                value: widget.balls[0],
+                value: widget.selected,
                 icon: const Icon(Icons.arrow_downward),
                 elevation: 16,
                 style: const TextStyle(color: Colors.deepPurple),
                 underline: Container(height: 2, color: Colors.deepPurpleAccent),
                 onChanged: (Ball? newValue) {
                   setState(() {
-                    selected = newValue!;
+                    widget.selected = newValue!;
                   });
 
                   bool found = false;
                   for (Ball item in widget.selectedBalls) {
-                    if (selected.id == item.id) {
+                    if (widget.selected!.id == item.id) {
                       found = true;
                     }
                   }
                   if (!found) {
-                    widget.selectedBalls.add(selected);
+                    widget.selectedBalls.add(widget.selected!);
                   }
                 },
                 items: widget.balls.map<DropdownMenuItem<Ball>>((Ball ball) {
